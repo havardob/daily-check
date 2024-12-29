@@ -1,0 +1,60 @@
+.checkbox {
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   width: calc(100% / 7.5);
+   aspect-ratio: 1;
+   justify-content: center;
+   border: 1px solid #FFF;
+   position: relative;
+   flex-shrink: 0;
+   margin-inline-start: -1px;
+   background-color: #eee;
+}
+
+.checkbox label {
+   cursor: pointer;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 4px;
+   line-height: 1;
+}
+
+.checkbox label::after {
+   content: "";
+   inset: 0;
+   display: block;
+   position: absolute;
+}
+
+.checkbox:has(:checked) {
+   background-color: blue;
+   color: #FFF;
+}
+
+.checkbox input {
+   clip: rect(0 0 0 0);
+   clip-path: inset(50%);
+   height: 1px;
+   overflow: hidden;
+   position: absolute;
+   white-space: nowrap;
+   width: 1px;
+}
+
+.checkbox.active {
+   background-color: red;
+}
+
+.title {
+   font-size: .875rem;
+   font-weight: 500;
+}
+
+.subtitle {
+   font-weight: 600;
+   font-size: .625rem;
+   text-transform: uppercase;
+}
