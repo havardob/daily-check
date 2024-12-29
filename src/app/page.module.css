@@ -35,7 +35,6 @@
 }
 
 .habit {
-  border-block-start: 1px solid #CCC;
 }
 
 .habit:nth-of-type(odd) {}
