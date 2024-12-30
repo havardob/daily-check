@@ -1,23 +1,18 @@
 'use client'
 
 import styles from "./checkbox.module.css";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef} from "react";
 import IconCheck from "@/components/icons/iconCheck";
 
 interface CheckboxProps {
     id: string;
     label: { title: string, subtitle?: string };
-    onClickAction: () => void;
+    onChangeAction: () => void;
     isChecked: boolean;
 }
 
 
-export default function Checkbox({id, label, onClickAction, isChecked}: CheckboxProps) {
-    const [checked, setChecked] = useState(isChecked);
-
-    const handleChange = () => {
-        setChecked(!checked);
-    };
+export default function Checkbox({id, label, onChangeAction, isChecked}: CheckboxProps) {
 
     const checkboxRef = useRef<HTMLDivElement | null>(null);
 
@@ -27,11 +22,10 @@ export default function Checkbox({id, label, onClickAction, isChecked}: Checkbox
         }
     }, []);
 
-
     return (
         <div className={styles.checkbox} ref={checkboxRef}>
             <label htmlFor={id}>
-                {checked ? (
+                {isChecked ? (
                     <IconCheck />
                 ) : (
                     <>
@@ -40,7 +34,7 @@ export default function Checkbox({id, label, onClickAction, isChecked}: Checkbox
                     </>
                 )}
             </label>
-            <input id={id} type="checkbox" checked={checked} onChange={handleChange} onClick={onClickAction} />
+            <input id={id} type="checkbox" checked={isChecked} onChange={onChangeAction} />
         </div>
     )
 }
