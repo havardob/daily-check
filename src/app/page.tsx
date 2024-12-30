@@ -94,7 +94,7 @@ export default function Home() {
         <div className={styles.page}>
             <header className={styles.header}>
                 <button>About</button>
-                <h1>My streak</h1>
+                <h1>My Streak</h1>
                 <button onClick={newHabit}>New +</button>
             </header>
             <main className={styles.main}>
