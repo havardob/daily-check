@@ -1,80 +1,93 @@
 
 .page {
-  min-height: 100dvh;
-  margin-inline: auto;
-  max-width: 800px;
-  background-color: #FFF;
-  font-family: "Geist", sans-serif;
+   min-height: 100dvh;
+   margin-inline: auto;
+   max-width: 800px;
+   background-color: #eee;
+   font-family: "Geist", sans-serif;
 }
 
 .header {
-  padding-block: 1rem;
-  padding-inline: 1rem;
-  border-bottom: 1px solid #CCC;
-  display: flex;
-  justify-content: space-between;
-  gap: .5rem;
-  align-items: center;
+   background-color: #FFF;
+   padding-block: 1rem;
+   padding-inline: 1rem;
+   border-bottom: 1px solid #CCC;
+   display: flex;
+   justify-content: space-between;
+   gap: .5rem;
+   align-items: center;
 }
 
 .header h1 {
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1;
+   font-size: 1rem;
+   font-weight: 500;
+   line-height: 1;
 }
 
 .header button {
-  padding-inline: .75em;
-  border: 1px solid #DDD;
-  background-color: #FFF;
-  padding-block: .25em;
-  border-radius: 6px;
-  border-bottom-width: 3px;
+   padding-inline: .75em;
+   border: 1px solid #DDD;
+   background-color: #FFF;
+   padding-block: .25em;
+   border-radius: 6px;
+   border-bottom-width: 3px;
 }
 
 .main {
-  margin-block-start: -1px;
-  padding-block-end: 3rem;
+   padding-block-end: 3rem;
 }
 
 .habit {
+   margin-block-start: 1rem;
 }
 
-.habit:nth-of-type(odd) {}
+.habit:nth-of-type(odd) {
+}
 
 .habit__header {
-  padding-inline: 1rem;
-  display: flex;
-  justify-content: space-between;
-  gap: .5rem;
-  padding-block-start: 1rem;
-  padding-block-end: .375rem;
+   padding-inline: 1rem;
+   display: flex;
+   gap: .25rem;
+   padding-block-start: .5rem;
+   padding-block-end: .375rem;
 }
 
 .habit__header button {
-  border: 0;
-  padding: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+   border: 0;
+   padding: 0;
+   aspect-ratio: 1;
+   height: 100%;
+   flex-shrink: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: #FFF;
+   border-radius: .375rem;
+}
+
+.habit__buttons {
+   display: flex;
+   gap: .25rem;
+   flex-shrink: 0;
 }
 
 .habit h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #303030;
+   font-size: 1rem;
+   font-weight: 600;
+   color: #303030;
+   background-color: #FFF;
+   display: inline-block;
+   border-radius: .375rem;
+   line-height: 1.25;
+   padding: .25em .5em;
 }
 
 .row {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 100%;
-  overflow: auto;
-  scroll-behavior: smooth;
-  padding-block-end: .5rem;
-  padding-inline-start: 1px;
+   display: flex;
+   flex-direction: row;
+   width: 100%;
+   max-width: 100%;
+   overflow: auto;
+   padding-block-end: .5rem;
+   padding-inline-start: 1px;
 }

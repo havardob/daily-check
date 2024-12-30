@@ -1,9 +1,10 @@
 'use client';
 import styles from "./page.module.css";
 import Checkbox from "@/components/checkbox";
-import React, {useEffect, useMemo, useState} from "react";
-import IconDots from "@/components/icons/iconDots";
+import React, {useEffect, useMemo, useRef, useState} from "react";
+import IconEdit from "@/components/icons/iconEdit";
 import {v4 as uuid} from "uuid";
+import IconTrash from "@/components/icons/iconTrash";
 
 type Habit = {
     id: string,
@@ -42,12 +43,12 @@ export default function Home() {
         const newHabitName = prompt("New habit");
         if (newHabitName) {
             setHabits((habits) => [
+                ...habits,
                 {
                     id: uuid(),
                     name: newHabitName,
                     checkedDays: []
-                },
-                ...habits
+                }
             ]);
         }
     }
@@ -67,6 +68,27 @@ export default function Home() {
         );
     }
 
+    function changeHabitName(habitId: string) {
+        const clickedHabit = habits.find(habit => habit.id === habitId);
+        const newName = prompt("New name", clickedHabit?.name);
+
+        if (newName === null || newName.trim() === "") {
+            return;
+        }
+
+        return setHabits((habits) =>
+            habits.map((habit) => habit.id === habitId ? {...habit, name: newName} : habit)
+        );
+    }
+
+    function deleteHabit(habitId: string) {
+        if (window.confirm(`Do you want to delete this habit`)) {
+            setHabits((habits) => habits.filter(habit => habit.id !== habitId));
+        } else {
+            return;
+        }
+    }
+
     return (
         <div className={styles.page}>
             <header className={styles.header}>
@@ -75,14 +97,20 @@ export default function Home() {
                 <button onClick={newHabit}>New +</button>
             </header>
             <main className={styles.main}>
-                {habits.map((habit, index) => (
+                {habits.reverse().map((habit, index) => (
                     <div key={habit.id + index} className={styles.habit}>
                         <div className={styles.habit__header}>
                             <h3>{habit.name}</h3>
-                            <button>
-                                <span className={"u-hidden"}>Toggle options for {habit.name}</span>
-                                <IconDots />
-                            </button>
+                            <div className={styles.habit__buttons}>
+                                <button onClick={() => changeHabitName(habit.id)}>
+                                    <span className={"u-hidden"}>Change name for {habit.name}</span>
+                                    <IconEdit />
+                                </button>
+                                <button onClick={() => deleteHabit(habit.id)}>
+                                    <span className={"u-hidden"}>Delete {habit.name}</span>
+                                    <IconTrash />
+                                </button>
+                            </div>
                         </div>
                         <div className={styles.row} data-row={habit.id} key={habit.id}>
                             {dates.map((date) => {

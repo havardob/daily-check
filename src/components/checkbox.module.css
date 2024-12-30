@@ -5,11 +5,11 @@
    width: calc(100% / 7.5);
    aspect-ratio: 1;
    justify-content: center;
-   border: 1px solid #FFF;
    position: relative;
    flex-shrink: 0;
    margin-inline-start: -1px;
-   background-color: #eee;
+   background-color: #fff;
+   color: #AAA;
 }
 
 .checkbox label {
