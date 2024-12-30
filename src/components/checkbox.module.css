@@ -20,18 +20,15 @@
    align-items: center;
    gap: 4px;
    line-height: 1;
-}
-
-.checkbox label::after {
-   content: "";
-   inset: 0;
-   display: block;
-   position: absolute;
+   width: 100%;
+   height: 100%;
+   touch-action: manipulation;
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .checkbox:has(:checked) {
-   background-color: blue;
-   color: #FFF;
+   background-color: #8fe88f;
+   color: #042b04;
 }
 
 .checkbox input {
@@ -46,6 +43,10 @@
 
 .checkbox.active {
    background-color: red;
+}
+
+.checkbox svg {
+   width: 1.5rem;
 }
 
 .title {

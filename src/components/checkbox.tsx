@@ -2,6 +2,7 @@
 
 import styles from "./checkbox.module.css";
 import React, {useState} from "react";
+import IconCheck from "@/components/icons/iconCheck";
 
 interface CheckboxProps {
     id: string;
@@ -19,12 +20,17 @@ export default function Checkbox({id, label, onClickAction, isChecked}: Checkbox
     };
 
 
-
     return (
         <div className={styles.checkbox}>
             <label htmlFor={id}>
-                <span className={styles.title}>{label.title}</span>
-                <span className={styles.subtitle}>{label.subtitle}</span>
+                {checked ? (
+                    <IconCheck />
+                ) : (
+                    <>
+                        <span className={styles.title}>{label.title}</span>
+                        <span className={styles.subtitle}>{label.subtitle}</span>
+                    </>
+                )}
             </label>
             <input id={id} type="checkbox" checked={checked} onChange={handleChange} onClick={onClickAction} />
         </div>

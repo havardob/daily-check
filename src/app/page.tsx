@@ -8,7 +8,7 @@ import {v4 as uuid} from "uuid";
 type Habit = {
     id: string,
     name: string,
-    checkedBoxes: string[]
+    checkedDays: string[]
 }
 
 export default function Home() {
@@ -45,22 +45,22 @@ export default function Home() {
                 {
                     id: uuid(),
                     name: newHabitName,
-                    checkedBoxes: []
+                    checkedDays: []
                 },
                 ...habits
             ]);
         }
     }
 
-    function checkHabit(habitId: string, checkboxId: string) {
+    function checkHabit(habitId: string, day: string) {
         setHabits((habits) =>
             habits.map((habit) =>
                 habit.id === habitId
                     ? {
                         ...habit,
-                        checkedBoxes: habit.checkedBoxes.includes(checkboxId)
-                            ? habit.checkedBoxes.filter(item => item !== checkboxId)
-                            : [...habit.checkedBoxes, checkboxId],
+                        checkedDays: habit.checkedDays.includes(day)
+                            ? habit.checkedDays.filter(item => item !== day)
+                            : [...habit.checkedDays, day],
                     }
                     : habit
             )
@@ -87,7 +87,7 @@ export default function Home() {
                         <div className={styles.row} data-row={habit.id} key={habit.id}>
                             {dates.map((date) => {
                                 const checkboxId = habit.id + date.toISOString();
-                                const isChecked = habit.checkedBoxes.includes(checkboxId);
+                                const isChecked = habit.checkedDays.includes(date.toISOString());
 
                                 return (
                                     <Checkbox
