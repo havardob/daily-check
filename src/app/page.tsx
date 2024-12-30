@@ -97,7 +97,7 @@ export default function Home() {
                 <button onClick={newHabit}>New +</button>
             </header>
             <main className={styles.main}>
-                {habits.reverse().map((habit, index) => (
+                {habits.map((habit, index) => (
                     <div key={habit.id + index} className={styles.habit}>
                         <div className={styles.habit__header}>
                             <h3>{habit.name}</h3>
