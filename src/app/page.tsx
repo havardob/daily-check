@@ -1,7 +1,7 @@
 'use client';
 import styles from "./page.module.css";
 import Checkbox from "@/components/checkbox";
-import React, {useEffect, useMemo, useRef, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import IconEdit from "@/components/icons/iconEdit";
 import {v4 as uuid} from "uuid";
 import IconTrash from "@/components/icons/iconTrash";
