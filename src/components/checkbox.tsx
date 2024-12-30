@@ -30,7 +30,9 @@ export default function Checkbox({id, label, onChangeAction, isChecked}: Checkbo
                 ) : (
                     <>
                         <span className={styles.title}>{label.title}</span>
-                        <span className={styles.subtitle}>{label.subtitle}</span>
+                        {label.subtitle && (
+                            <span className={styles.subtitle}>{label.subtitle}</span>
+                        )}
                     </>
                 )}
             </label>

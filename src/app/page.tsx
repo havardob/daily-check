@@ -143,6 +143,8 @@ export default function Home() {
                                 {dates.map((date) => {
                                     const checkboxId = habit.id + date.toISOString();
                                     const isChecked = habit.checkedDays.includes(date.toISOString());
+                                    const month = date.toLocaleDateString("en-GB", {month: "short"});
+                                    const day = date.toLocaleDateString("en-GB", {day: "numeric"})
 
                                     return (
                                         <Checkbox
@@ -150,11 +152,8 @@ export default function Home() {
                                             id={checkboxId}
                                             label={
                                                 {
-                                                    title: date.toLocaleDateString("en-GB", {weekday: "narrow"}),
-                                                    subtitle: date.toLocaleDateString("en-GB", {
-                                                        month: "short",
-                                                        day: "numeric"
-                                                    })
+                                                    title: day === "1" || day === "10" || day === "20" ? day : day,
+                                                    subtitle: day === "1" || day === "10" || day === "20" ? month : ""
                                                 }
                                             }
                                             isChecked={isChecked}
