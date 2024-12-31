@@ -2,7 +2,7 @@
 
 import styles from "./checkbox.module.css";
 import React, {useEffect, useRef} from "react";
-import IconCheck from "@/components/icons/iconCheck";
+import IconCheck from "@/components/Icons/iconCheck";
 
 interface CheckboxProps {
     id: string;
@@ -13,7 +13,6 @@ interface CheckboxProps {
 
 
 export default function Checkbox({id, label, onChangeAction, isChecked}: CheckboxProps) {
-
     const checkboxRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {

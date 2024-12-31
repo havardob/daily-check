@@ -1,11 +1,13 @@
 'use client';
 import styles from "./page.module.css";
-import Checkbox from "@/components/checkbox";
+import Checkbox from "@/components/Checkbox/checkbox";
 import React, {useEffect, useMemo, useState} from "react";
-import IconEdit from "@/components/icons/iconEdit";
+import IconEdit from "@/components/Icons/iconEdit";
 import {v4 as uuid} from "uuid";
-import IconTrash from "@/components/icons/iconTrash";
-import IconFlame from "@/components/icons/iconFlame";
+import IconTrash from "@/components/Icons/iconTrash";
+import IconFlame from "@/components/Icons/iconFlame";
+import Header from "@/components/Header/header";
+import IconAdd from "@/components/Icons/IconAdd";
 
 type Habit = {
     id: string,
@@ -92,11 +94,7 @@ export default function Home() {
 
     return (
         <div className={styles.page}>
-            <header className={styles.header}>
-                <button>About</button>
-                <h1>My Streak</h1>
-                <button onClick={newHabit}>New +</button>
-            </header>
+            <Header />
             <main className={styles.main}>
                 {habits.map((habit, index) => {
                     const calculateStreak = (checkedDays: string[]) => {
@@ -152,8 +150,8 @@ export default function Home() {
                                             id={checkboxId}
                                             label={
                                                 {
-                                                    title: day === "1" || day === "10" || day === "20" ? day : day,
-                                                    subtitle: day === "1" || day === "10" || day === "20" ? month : ""
+                                                    title: day,
+                                                    subtitle: day === "1" || day === "6" || day === "11" || day === "16" || day === "21" || day === "26" ? month : ""
                                                 }
                                             }
                                             isChecked={isChecked}
@@ -164,6 +162,12 @@ export default function Home() {
                         </div>
                     )
                 })}
+                <div className={styles.ctaButtonWrapper}>
+                    <button className={styles.ctaButton} onClick={newHabit}>
+                        <span>New Habit</span>
+                        <IconAdd />
+                    </button>
+                </div>
             </main>
         </div>
     );

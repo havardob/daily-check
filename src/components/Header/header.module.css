@@ -1,0 +1,26 @@
+.header {
+   background-color: #FFF;
+   padding-block: 1rem;
+   padding-inline: 1rem;
+   border-bottom: 1px solid #CCC;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: .5rem;
+   font-size: 1.125rem;
+}
+
+.header h1 {
+   font-size: inherit;
+   font-weight: 500;
+   line-height: 1;
+}
+
+.header button {
+   border: 0;
+   font-size: 1.125rem;
+}
+
+.header button svg {
+   width: 1.5rem;
+}

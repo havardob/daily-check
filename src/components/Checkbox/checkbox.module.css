@@ -26,8 +26,8 @@
 }
 
 .checkbox:has(:checked) {
-   background-color: #f1d64d;
-   color: #433404;
+   background-color: #4df19f;
+   color: #044313;
 }
 
 .checkbox input {

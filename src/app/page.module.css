@@ -3,38 +3,27 @@
    min-height: 100dvh;
    margin-inline: auto;
    max-width: 800px;
-   background-color: #f6f3e4;
-   font-family: "Geist", sans-serif;
-}
-
-.header {
-   background-color: #FFF;
-   padding-block: 1rem;
-   padding-inline: 1rem;
-   border-bottom: 1px solid #CCC;
-   display: flex;
-   justify-content: space-between;
-   gap: .5rem;
-   align-items: center;
-}
-
-.header h1 {
-   font-size: 1rem;
-   font-weight: 500;
-   line-height: 1;
-}
-
-.header button {
-   padding-inline: .75em;
-   border: 1px solid #DDD;
-   background-color: #FFF;
-   padding-block: .25em;
-   border-radius: 6px;
-   border-bottom-width: 3px;
+   background-color: #e4f6f0;
 }
 
 .main {
    padding-block-end: 3rem;
+}
+
+.ctaButtonWrapper {
+   margin-block-start: 2rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.ctaButton {
+   border: 0;
+   display: flex;
+   align-items: center;
+   column-gap: .5rem;
+   line-height: 1;
+   color: #044313;
 }
 
 .habit {
