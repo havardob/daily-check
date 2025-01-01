@@ -10,6 +10,7 @@ import Header from "@/components/Header/header";
 import IconAdd from "@/components/Icons/IconAdd";
 import IconUpArrow from "@/components/Icons/IconUpArrow";
 import IconDownArrow from "@/components/Icons/IconDownArrow";
+import IconMore from "@/components/Icons/IconMore";
 
 type Habit = {
     id: string,
@@ -19,6 +20,11 @@ type Habit = {
 
 export default function Home() {
     const [habits, setHabits] = useState<Habit[]>([]);
+    const [openPopover, setOpenPopover] = useState(null);
+
+    const togglePopover = (habitId: any) => {
+        setOpenPopover((prev) => (prev === habitId ? null : habitId));
+    };
 
     const dates = useMemo(() => {
         const startDate = new Date("2024-12-01");
@@ -45,8 +51,14 @@ export default function Home() {
 
 
     function newHabit() {
-        const newHabitName = prompt("New habit");
-        if (newHabitName) {
+        const newHabitName = prompt("New habit (max 25 characters)");
+
+        if (newHabitName === null || newHabitName.trim() === "") {
+            return;
+        }
+
+        if (newHabitName !== "" && newHabitName.length <= 25) {
+            console.log(newHabitName.length)
             setHabits((habits) => [
                 ...habits,
                 {
@@ -55,6 +67,8 @@ export default function Home() {
                     checkedDays: []
                 }
             ]);
+        } else {
+            alert("Write something between 1 and 25 characters")
         }
     }
 
@@ -75,15 +89,20 @@ export default function Home() {
 
     function changeHabitName(habitId: string) {
         const clickedHabit = habits.find(habit => habit.id === habitId);
-        const newName = prompt("New name", clickedHabit?.name);
+        const newName = prompt("New name (max 25 characters)", clickedHabit?.name);
 
         if (newName === null || newName.trim() === "") {
             return;
         }
 
-        return setHabits((habits) =>
-            habits.map((habit) => habit.id === habitId ? {...habit, name: newName} : habit)
-        );
+        if (newName !== "" && newName.length <= 25) {
+            return setHabits((habits) =>
+                habits.map((habit) => habit.id === habitId ? {...habit, name: newName} : habit)
+            );
+        } else {
+            alert("Write something between 1 and 25 characters")
+        }
+
     }
 
     function deleteHabit(habitId: string) {
@@ -145,32 +164,36 @@ export default function Home() {
                     const streak = calculateStreak(habit.checkedDays);
                     return (
                         <div key={habit.id + index} className={styles.habit}>
-                            <div className={styles.habit__header}>
-                                <h3>{habit.name}</h3>
-                                <div className={styles.habit__buttons}>
-                                    <button onClick={() => changeHabitName(habit.id)}>
-                                        <span className={"u-hidden"}>Change name for {habit.name}</span>
-                                        <IconEdit />
+                            <div className={styles.habitHeader}>
+                                <h3 className={styles.habitTitle}>{habit.name}</h3>
+                                <div className={styles.habitPopoverWrapper}>
+                                    <button className={styles.habitPopoverToggle} onClick={() => togglePopover(habit.id)}>
+                                        <span className={"u-hidden"}>Toggle options for {habit.name}</span>
+                                        <IconMore />
                                     </button>
-                                    <button onClick={() => deleteHabit(habit.id)}>
-                                        <span className={"u-hidden"}>Delete {habit.name}</span>
-                                        <IconTrash />
-                                    </button>
-                                    {index !== 0 && (
-                                    <button onClick={() => moveHabit(habit.id, "up")}>
-                                        <span className={"u-hidden"}>Move {habit.name} up</span>
-                                        <IconUpArrow />
-                                    </button>
-                                    )}
-                                    {index !== habits.length - 1 && (
-                                    <button onClick={() => moveHabit(habit.id, "down")}>
-                                        <span className={"u-hidden"}>Move {habit.name} down</span>
-                                        <IconDownArrow />
-                                    </button>
+                                    {openPopover === habit.id && (
+                                        <div className={styles.habitPopover} onClick={() => togglePopover(habit.id)}>
+                                            <button onClick={() => changeHabitName(habit.id)} className={styles.habitPopoverButton}>
+                                                <IconEdit />
+                                                <span>Edit Name</span>
+                                            </button>
+                                            <button onClick={() => moveHabit(habit.id, "up")} className={styles.habitPopoverButton} disabled={index === 0}>
+                                                <IconUpArrow />
+                                                <span>Move Up</span>
+                                            </button>
+                                            <button onClick={() => moveHabit(habit.id, "down")} className={styles.habitPopoverButton} disabled={index === habits.length - 1}>
+                                                <IconDownArrow />
+                                                <span>Move Down</span>
+                                            </button>
+                                            <button onClick={() => deleteHabit(habit.id)} className={styles.habitPopoverButton}>
+                                                <IconTrash />
+                                                <span>Delete</span>
+                                            </button>
+                                        </div>
                                     )}
                                 </div>
                                 {streak > 0 && (
-                                    <div className={styles.habit__streak}><IconFlame />{streak}</div>
+                                    <div className={styles.habitStreak}><IconFlame />{streak}</div>
                                 )}
                             </div>
                             <div className={styles.row} data-row={habit.id} key={habit.id}>

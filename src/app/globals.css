@@ -12,27 +12,51 @@
   --cerulean-blue-900: #163b92;
   --cerulean-blue-950: #122559;
 
+  --silver-50: #f7f7f7;
+  --silver-100: #ededed;
+  --silver-200: #dfdfdf;
+  --silver-300: #c4c4c4;
+  --silver-400: #adadad;
+  --silver-500: #999999;
+  --silver-600: #888888;
+  --silver-700: #7b7b7b;
+  --silver-800: #676767;
+  --silver-900: #545454;
+  --silver-950: #363636;
+
+  --camarone-50: #ebffe4;
+  --camarone-100: #d3ffc4;
+  --camarone-200: #a8ff8f;
+  --camarone-300: #70ff4f;
+  --camarone-400: #3dff1b;
+  --camarone-500: #1ce700;
+  --camarone-600: #11b900;
+  --camarone-700: #0d8c00;
+  --camarone-800: #0f6e06;
+  --camarone-900: #0f570a;
+  --camarone-950: #013400;
+
   --flame: #e80101;
 
-  --body-bg-color: var(--cerulean-blue-100);
+  --body-bg-color: var(--silver-100);
 
   --header-bg-color: var(--white);
-  --header-border-color: var(--cerulean-blue-200);
-  --header-text-color: var(--cerulean-blue-950);
+  --header-border-color: var(--silver-200);
+  --header-text-color: var(--silver-950);
 
-  --habit-text-color: var(--cerulean-blue-950);
+  --habit-text-color: var(--silver-950);
   --habitTitle-bg-color: var(--white);
   --habitButton-bg-color: var(--white);
 
-  --streak-text-color: var(--cerulean-blue-950);
+  --streak-text-color: var(--camarone-950);
   --streak-icon-color: var(--flame);
 
   --checkbox-bg-color--unchecked: var(--white);
-  --checkbox-text-color--unchecked: var(--cerulean-blue-900);
-  --checkbox-bg-color--checked: var(--cerulean-blue-600);
-  --checkbox-text-color--checked: var(--cerulean-blue-50);
+  --checkbox-text-color--unchecked: var(--silver-500);
+  --checkbox-bg-color--checked: var(--camarone-600);
+  --checkbox-text-color--checked: var(--camarone-100);
 
-  --cta-text-color: var(--cerulean-blue-600);
+  --cta-text-color: var(--camarone-700);
 }
 
 *,

@@ -29,7 +29,7 @@
    color: var(--habit-text-color);
 }
 
-.habit__header {
+.habitHeader {
    padding-inline: 1rem;
    display: flex;
    flex-wrap: wrap;
@@ -40,7 +40,12 @@
    padding-block-end: .375rem;
 }
 
-.habit__header button {
+.habitPopoverWrapper {
+   position: relative;
+   overflow: visible;
+}
+
+.habitPopoverToggle {
    border: 0;
    padding: 0;
    aspect-ratio: 1;
@@ -53,13 +58,41 @@
    background-color: var(--habitButton-bg-color);
 }
 
-.habit__buttons {
+.habitPopover {
    display: flex;
-   gap: .25rem;
+   flex-direction: column;
+   background-color: var(--white);
+   border-radius: .25rem;
+   border: 0;
+   position: absolute;
+   z-index: 999;
+   left: 0;
+   top: calc(100% + .25rem);
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+   width: max-content;
+}
+
+.habitPopoverButton {
+   display: flex;
+   border: 0;
+   padding: .5rem;
+   align-items: center;
+   column-gap: .375rem;
+   line-height: 1;
+   white-space: nowrap;
+   font-size: .875rem;
+}
+
+.habitPopoverButton[disabled] {
+   opacity: .35;
+}
+
+.habitPopoverButton svg {
+   width: 1rem;
    flex-shrink: 0;
 }
 
-.habit__streak {
+.habitStreak {
    margin-inline-start: auto;
    align-self: center;
    display: flex;
@@ -69,13 +102,13 @@
    color: var(--streak-text-color);
 }
 
-.habit__streak svg {
+.habitStreak svg {
    width: 1.25rem;
    flex-shrink: 0;
    color: var(--streak-icon-color);
 }
 
-.habit h3 {
+.habitTitle {
    font-size: 1rem;
    font-weight: 600;
    background-color: var(--habitTitle-bg-color);
@@ -93,4 +126,5 @@
    overflow: auto;
    padding-block-end: .5rem;
    padding-inline-start: 1px;
+   gap: 2px;
 }
