@@ -20,10 +20,12 @@ type Habit = {
 
 export default function Home() {
     const [habits, setHabits] = useState<Habit[]>([]);
-    const [openPopover, setOpenPopover] = useState(null);
+    const [openPopover, setOpenPopover] = useState<string | null>(null);
 
-    const togglePopover = (habitId: any) => {
-        setOpenPopover((prev) => (prev === habitId ? null : habitId));
+    const togglePopover = (habitId: string) => {
+        if (habitId) {
+            setOpenPopover((prev) => (prev === habitId ? null : habitId));
+        }
     };
 
     const dates = useMemo(() => {
