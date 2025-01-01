@@ -1,9 +1,6 @@
 
 .page {
    min-height: 100dvh;
-   margin-inline: auto;
-   max-width: 800px;
-   background-color: #e4f6f0;
 }
 
 .main {
@@ -23,21 +20,22 @@
    align-items: center;
    column-gap: .5rem;
    line-height: 1;
-   color: #044313;
+   color: var(--cta-text-color);
+   font-weight: 600;
 }
 
 .habit {
    margin-block-start: 1rem;
-}
-
-.habit:nth-of-type(odd) {
+   color: var(--habit-text-color);
 }
 
 .habit__header {
    padding-inline: 1rem;
    display: flex;
+   flex-wrap: wrap;
    align-items: stretch;
-   gap: .25rem;
+   column-gap: .25rem;
+   row-gap: .5rem;
    padding-block-start: .5rem;
    padding-block-end: .375rem;
 }
@@ -51,8 +49,8 @@
    display: flex;
    align-items: center;
    justify-content: center;
-   background-color: #FFF;
    border-radius: .375rem;
+   background-color: var(--habitButton-bg-color);
 }
 
 .habit__buttons {
@@ -68,19 +66,19 @@
    align-items: center;
    line-height: 1;
    gap: .125rem;
+   color: var(--streak-text-color);
 }
 
 .habit__streak svg {
    width: 1.25rem;
    flex-shrink: 0;
-   color: #e80101;
+   color: var(--streak-icon-color);
 }
 
 .habit h3 {
    font-size: 1rem;
    font-weight: 600;
-   color: #303030;
-   background-color: #FFF;
+   background-color: var(--habitTitle-bg-color);
    display: inline-block;
    border-radius: .375rem;
    line-height: 1.25;
@@ -95,5 +93,4 @@
    overflow: auto;
    padding-block-end: .5rem;
    padding-inline-start: 1px;
-   gap: 2px;
 }

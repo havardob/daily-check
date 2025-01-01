@@ -8,6 +8,8 @@ import IconTrash from "@/components/Icons/iconTrash";
 import IconFlame from "@/components/Icons/iconFlame";
 import Header from "@/components/Header/header";
 import IconAdd from "@/components/Icons/IconAdd";
+import IconUpArrow from "@/components/Icons/IconUpArrow";
+import IconDownArrow from "@/components/Icons/IconDownArrow";
 
 type Habit = {
     id: string,
@@ -92,6 +94,28 @@ export default function Home() {
         }
     }
 
+    function moveHabit(habitId: string, direction: "up" | "down") {
+        setHabits((habits) => {
+            const index = habits.findIndex((habit) => habit.id === habitId);
+            if (index === -1) {
+                return habits;
+            }
+
+            const toIndex = direction === "up" ? index - 1 : index + 1;
+
+            if (toIndex < 0 || toIndex >= habits.length) {
+                return habits;
+            }
+
+            const updatedHabits = [...habits];
+
+            const [movedHabit] = updatedHabits.splice(index, 1);
+            updatedHabits.splice(toIndex, 0, movedHabit);
+
+            return updatedHabits;
+        });
+    }
+
     return (
         <div className={styles.page}>
             <Header />
@@ -132,6 +156,18 @@ export default function Home() {
                                         <span className={"u-hidden"}>Delete {habit.name}</span>
                                         <IconTrash />
                                     </button>
+                                    {index !== 0 && (
+                                    <button onClick={() => moveHabit(habit.id, "up")}>
+                                        <span className={"u-hidden"}>Move {habit.name} up</span>
+                                        <IconUpArrow />
+                                    </button>
+                                    )}
+                                    {index !== habits.length - 1 && (
+                                    <button onClick={() => moveHabit(habit.id, "down")}>
+                                        <span className={"u-hidden"}>Move {habit.name} down</span>
+                                        <IconDownArrow />
+                                    </button>
+                                    )}
                                 </div>
                                 {streak > 0 && (
                                     <div className={styles.habit__streak}><IconFlame />{streak}</div>

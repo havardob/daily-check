@@ -1,3 +1,40 @@
+:root {
+  --white: #ffffff;
+  --cerulean-blue-50: #eef7ff;
+  --cerulean-blue-100: #d8ecff;
+  --cerulean-blue-200: #baddff;
+  --cerulean-blue-300: #8bcaff;
+  --cerulean-blue-400: #54abff;
+  --cerulean-blue-500: #2c87ff;
+  --cerulean-blue-600: #1566fb;
+  --cerulean-blue-700: #0e4ee1;
+  --cerulean-blue-800: #1341ba;
+  --cerulean-blue-900: #163b92;
+  --cerulean-blue-950: #122559;
+
+  --flame: #e80101;
+
+  --body-bg-color: var(--cerulean-blue-100);
+
+  --header-bg-color: var(--white);
+  --header-border-color: var(--cerulean-blue-200);
+  --header-text-color: var(--cerulean-blue-950);
+
+  --habit-text-color: var(--cerulean-blue-950);
+  --habitTitle-bg-color: var(--white);
+  --habitButton-bg-color: var(--white);
+
+  --streak-text-color: var(--cerulean-blue-950);
+  --streak-icon-color: var(--flame);
+
+  --checkbox-bg-color--unchecked: var(--white);
+  --checkbox-text-color--unchecked: var(--cerulean-blue-900);
+  --checkbox-bg-color--checked: var(--cerulean-blue-600);
+  --checkbox-text-color--checked: var(--cerulean-blue-50);
+
+  --cta-text-color: var(--cerulean-blue-600);
+}
+
 *,
 *::before,
 *::after {
@@ -67,4 +104,5 @@ a {
 
 body {
   font-family: "Geist", sans-serif;
+  background-color: var(--body-bg-color);
 }

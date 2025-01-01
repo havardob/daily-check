@@ -1,8 +1,9 @@
 .header {
-   background-color: #FFF;
+   background-color: var(--header-bg-color);
+   color: var(--header-text-color);
+   border-bottom: 1px solid var(--header-border-color);
    padding-block: 1rem;
    padding-inline: 1rem;
-   border-bottom: 1px solid #CCC;
    display: flex;
    justify-content: space-between;
    align-items: center;
