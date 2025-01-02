@@ -28,6 +28,12 @@ export default function Home() {
         }
     };
 
+    const closePopover = () => {
+        if (openPopover) {
+            setOpenPopover("")
+        }
+    }
+
     const dates = useMemo(() => {
         const startDate = new Date("2024-12-01");
         const today = new Date();
@@ -138,7 +144,7 @@ export default function Home() {
     }
 
     return (
-        <div className={styles.page}>
+        <div className={styles.page} onClick={closePopover}>
             <Header />
             <main className={styles.main}>
                 {habits.map((habit, index) => {
@@ -204,6 +210,7 @@ export default function Home() {
                                     const isChecked = habit.checkedDays.includes(date.toISOString());
                                     const month = date.toLocaleDateString("en-GB", {month: "short"});
                                     const day = date.toLocaleDateString("en-GB", {day: "numeric"})
+                                    const weekday = date.toLocaleDateString("en-GB", {weekday: "narrow"})
 
                                     return (
                                         <Checkbox
@@ -211,8 +218,8 @@ export default function Home() {
                                             id={checkboxId}
                                             label={
                                                 {
-                                                    title: day,
-                                                    subtitle: day === "1" || day === "6" || day === "11" || day === "16" || day === "21" || day === "26" ? month : ""
+                                                    title: weekday,
+                                                    subtitle: day + " " + month
                                                 }
                                             }
                                             isChecked={isChecked}
