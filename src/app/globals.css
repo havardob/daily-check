@@ -52,7 +52,7 @@
   --streak-icon-color: var(--flame);
 
   --checkbox-bg-color--unchecked: var(--white);
-  --checkbox-text-color--unchecked: var(--silver-400);
+  --checkbox-text-color--unchecked: var(--silver-600);
   --checkbox-bg-color--checked: var(--camarone-600);
   --checkbox-text-color--checked: var(--camarone-100);
 
