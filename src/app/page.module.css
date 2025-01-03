@@ -59,17 +59,33 @@
 }
 
 .habitPopover {
-   display: flex;
-   flex-direction: column;
-   background-color: var(--white);
-   border-radius: .25rem;
-   border: 0;
    position: absolute;
    z-index: 999;
    left: 0;
    top: calc(100% + .25rem);
+}
+
+.habitPopoverInner {
+   display: flex;
+   flex-direction: column;
+   border-radius: .25rem;
+   background-color: var(--habitButton-bg-color);
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
    width: max-content;
+}
+
+.habitPopover:after {
+   position: fixed;
+   content: "";
+   height: 100dvh;
+   width: 100dvw;
+   inset: 0;
+   background-color: rgba(0, 0, 0, .2);
+   z-index: -1;
+}
+
+:root[data-theme="dark"] .habitPopover:after {
+   background-color: rgba(0, 0, 0, .2);
 }
 
 .habitPopoverButton {

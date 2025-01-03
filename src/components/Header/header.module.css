@@ -25,3 +25,58 @@
 .header button svg {
    width: 1.5rem;
 }
+
+.headerDialog[open] {
+   border: 0;
+   max-width: 100%;
+   max-height: 100%;
+   padding: 1rem;
+   background-color: transparent;
+}
+
+.headerDialog::backdrop {
+   background-color: rgba(0, 0, 0, 0.5)
+}
+
+.headerDialogInner {
+   background-color: var(--dialog-bg-color);
+   color: var(--dialog-text-color);
+   padding-inline: 1rem;
+   padding-block-start: 2rem;
+   padding-block-end: 3rem;
+   border-radius: .5rem;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+   position: relative;
+   width: 100%;
+}
+
+.headerDialogInner > div > * + * {
+   margin-block-start: 1em;
+}
+
+.headerDialogInner > div svg {
+   display: inline-block;
+   color: var(--streak-icon-color);
+}
+
+.headerDialogInner > button {
+   position: absolute;
+   top: 1rem;
+   right: 1rem;
+   border: 0;
+   background-color: transparent;
+   font-size: 1.25rem;
+   width: 2rem;
+   height: 2rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.headerDialogInner :where(h2) {
+   font-size: 1.125rem;
+}
+
+.headerDialogInner :where(h2) {
+   font-size: 1.125rem;
+}
