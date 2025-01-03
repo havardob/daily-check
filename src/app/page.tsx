@@ -34,9 +34,9 @@ export default function Home() {
         }
     }
 
+    const today = new Date();
     const dates = useMemo(() => {
         const startDate = new Date("2024-12-01");
-        const today = new Date();
         const result: Date[] = [];
         const date = new Date(startDate);
         while (date <= today) {
@@ -44,7 +44,7 @@ export default function Home() {
             date.setDate(date.getDate() + 1);
         }
         return result;
-    }, []);
+    }, [today]);
 
     useEffect(() => {
         const storedHabits = localStorage.getItem('storage');
