@@ -156,7 +156,9 @@ export default function Home() {
         });
     }
 
+
     const calculateStreak = (checkedDays: string[]) => {
+        let streakIsFromYesterday = false;
         const sortedDays: Date[] = checkedDays
             .map((day: string) => new Date(day))
             .sort((a, b) => b.getTime() - a.getTime()); // Sort dates descending
@@ -169,6 +171,7 @@ export default function Home() {
 
         if (lastCheckedDay.toDateString() === yesterday.toDateString()) {
             dayToCompare = yesterday;
+            streakIsFromYesterday = true;
         }
 
         for (let i = 0; i < sortedDays.length; i++) {
@@ -179,7 +182,7 @@ export default function Home() {
             streak++;
         }
 
-        return streak;
+        return {streakIsFromYesterday, streak};
     };
 
     function toggleTheme() {
@@ -229,8 +232,9 @@ export default function Home() {
                                             </div>
                                         )}
                                     </div>
-                                    {streak > 0 && (
-                                        <div className={styles.habitStreak}><IconFlame />{streak}</div>
+                                    {streak.streak > 0 && (
+                                        <div className={styles.habitStreak} style={{opacity: streak.streakIsFromYesterday ? 0.25 : 1}}>
+                                            <IconFlame />{streak.streak}</div>
                                     )}
                                 </div>
                                 <div className={styles.row} data-row={habit.id} key={habit.id}>
