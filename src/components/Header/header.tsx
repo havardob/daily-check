@@ -44,8 +44,6 @@ export default function Header({themeToggle}: HeaderProps) {
                            a <strong><IconFlame />streak</strong>.</p>
                         <p>No statistics. No former "best streak". It only shows you the streak that you're currently
                            on, and hopefully will continue on for a long time going forward.</p>
-                        <p>No statistics. No former "best streak". It only shows you the streak that you're currently
-                           on, and hopefully will continue on for a long time going forward.</p>
                         {/*
                         <h3>Frequently asked questions</h3>
                         <details>
