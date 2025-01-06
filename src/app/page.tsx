@@ -163,12 +163,17 @@ export default function Home() {
             .sort((a, b) => b.getTime() - a.getTime()); // Sort dates descending
 
         let streak = 0;
-        const today = new Date().getTime();
+        const today = new Date();
+        const yesterday = new Date(today.getTime() - (24 * 60 * 60 * 1000));
+        const lastCheckedDay = new Date(sortedDays[0]);
+        let dayToCompare = today;
+
+        if (lastCheckedDay.toDateString() === yesterday.toDateString()) {
+            dayToCompare = yesterday;
+        }
 
         for (let i = 0; i < sortedDays.length; i++) {
-            const diffDays: number = Math.floor(
-                (today - sortedDays[i].getTime()) / (1000 * 60 * 60 * 24)
-            );
+            const diffDays: number = Math.floor((dayToCompare.getTime() - sortedDays[i].getTime()) / (1000 * 60 * 60 * 24));
 
             if (diffDays !== streak) break;
 
