@@ -11,7 +11,6 @@
    color: var(--checkbox-text-color--unchecked);
    transform: scale(1);
    transform-origin: center center;
-   will-change: transform;
 }
 
 .checkbox label {
@@ -31,7 +30,10 @@
 .checkbox:has(:checked) {
    background-color: var(--checkbox-bg-color--checked);
    color: var(--checkbox-text-color--checked);
-   animation: bounce .15s forwards ease;
+   animation: bounce .15s;
+   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+   animation-fill-mode: forwards;
+   will-change: transform;
 }
 
 .checkbox input {
