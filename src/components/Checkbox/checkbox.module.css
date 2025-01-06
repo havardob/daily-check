@@ -9,6 +9,7 @@
    flex-shrink: 0;
    background-color: var(--checkbox-bg-color--unchecked);
    color: var(--checkbox-text-color--unchecked);
+   scale: 1;
 }
 
 .checkbox label {
@@ -28,6 +29,7 @@
 .checkbox:has(:checked) {
    background-color: var(--checkbox-bg-color--checked);
    color: var(--checkbox-text-color--checked);
+   animation: bounce .15s forwards ease;
 }
 
 .checkbox input {
@@ -55,3 +57,16 @@
    text-transform: uppercase;
 }
 
+@keyframes bounce {
+   0% {
+      scale: 1;
+   }
+
+   50% {
+      scale: .75;
+   }
+
+   100% {
+      scale: 1.025;
+   }
+}

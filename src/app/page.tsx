@@ -80,7 +80,6 @@ export default function Home() {
         }
 
         if (newHabitName !== "" && newHabitName.length <= 25) {
-            console.log(newHabitName.length)
             setHabits((habits) => [
                 ...habits,
                 {
