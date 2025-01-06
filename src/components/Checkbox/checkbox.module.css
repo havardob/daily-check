@@ -9,7 +9,9 @@
    flex-shrink: 0;
    background-color: var(--checkbox-bg-color--unchecked);
    color: var(--checkbox-text-color--unchecked);
-   scale: 1;
+   transform: scale(1);
+   transform-origin: center center;
+   will-change: transform;
 }
 
 .checkbox label {
@@ -59,14 +61,14 @@
 
 @keyframes bounce {
    0% {
-      scale: 1;
+      transform: scale(1);
    }
 
    50% {
-      scale: .75;
+      transform: scale(.75);
    }
 
    100% {
-      scale: 1.025;
+      transform: scale(1.025);
    }
 }
