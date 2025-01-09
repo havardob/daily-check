@@ -2,7 +2,7 @@
    display: flex;
    flex-direction: column;
    text-align: center;
-   width: calc(100% / 7.75);
+   width: clamp(3.25rem, calc(100% / 7.75), 3.5rem);
    aspect-ratio: 1;
    justify-content: center;
    position: relative;
@@ -52,13 +52,12 @@
 
 .title {
    font-size: .75rem;
-   font-weight: 400;
+   font-weight: 600;
 }
 
 .subtitle {
-   font-weight: 400;
+   font-weight: 500;
    font-size: .625rem;
-   text-transform: uppercase;
 }
 
 @keyframes bounce {
