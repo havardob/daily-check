@@ -56,7 +56,7 @@
   --streak-icon-color: var(--flame);
 
   --checkbox-bg-color--unchecked: var(--white);
-  --checkbox-text-color--unchecked: var(--silver-600);
+  --checkbox-text-color--unchecked: var(--silver-900);
   --checkbox-bg-color--checked: var(--camarone-600);
   --checkbox-text-color--checked: var(--camarone-100);
 
@@ -81,7 +81,7 @@
   --streak-icon-color: var(--flame);
 
   --checkbox-bg-color--unchecked: var(--cod-gray-900);
-  --checkbox-text-color--unchecked: var(--cod-gray-200);
+  --checkbox-text-color--unchecked: var(--cod-gray-100);
   --checkbox-bg-color--checked: var(--camarone-700);
   --checkbox-text-color--checked: var(--white);
 

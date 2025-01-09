@@ -1,7 +1,7 @@
 'use client';
 import styles from "./page.module.css";
 import Checkbox from "@/components/Checkbox/checkbox";
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import IconEdit from "@/components/Icons/iconEdit";
 import {v4 as uuid} from "uuid";
 import IconTrash from "@/components/Icons/iconTrash";
@@ -22,6 +22,7 @@ export default function Home() {
     const [habits, setHabits] = useState<Habit[]>([]);
     const [openPopover, setOpenPopover] = useState<string | null>(null);
     const [theme, setTheme] = useState("light");
+    const popoverRef = useRef<HTMLDivElement | null>(null);
 
     const togglePopover = (habitId: string) => {
         if (habitId) {
@@ -51,6 +52,21 @@ export default function Home() {
     }, [today]);
 
     useEffect(() => {
+        const popoverBounds = popoverRef.current?.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+
+        if (popoverBounds) {
+            if (popoverBounds.right >= viewportWidth) {
+                popoverRef.current?.style.setProperty("left", "initial");
+                popoverRef.current?.style.setProperty("right", "0");
+            } else {
+                popoverRef.current?.style.setProperty("left", "0");
+                popoverRef.current?.style.setProperty("right", "initial");
+            }
+        }
+    }, [openPopover]);
+
+    useEffect(() => {
         const storedHabits = localStorage.getItem('storage');
         if (storedHabits) {
             setHabits(JSON.parse(storedHabits));
@@ -59,6 +75,10 @@ export default function Home() {
         const storedTheme = localStorage.getItem("theme");
         if (storedTheme) {
             setTheme(storedTheme);
+        } else {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                setTheme("dark");
+            }
         }
     }, []);
 
@@ -73,13 +93,13 @@ export default function Home() {
 
 
     function newHabit() {
-        const newHabitName = prompt("New habit (max 25 characters)");
+        const newHabitName = prompt("New habit");
 
         if (newHabitName === null || newHabitName.trim() === "") {
             return;
         }
 
-        if (newHabitName !== "" && newHabitName.length <= 25) {
+        if (newHabitName !== "") {
             setHabits((habits) => [
                 ...habits,
                 {
@@ -88,8 +108,6 @@ export default function Home() {
                     checkedDays: []
                 }
             ]);
-        } else {
-            alert("Write something between 1 and 25 characters")
         }
     }
 
@@ -110,18 +128,16 @@ export default function Home() {
 
     function changeHabitName(habitId: string) {
         const clickedHabit = habits.find(habit => habit.id === habitId);
-        const newName = prompt("New name (max 25 characters)", clickedHabit?.name);
+        const newName = prompt("New name", clickedHabit?.name);
 
         if (newName === null || newName.trim() === "") {
             return;
         }
 
-        if (newName !== "" && newName.length <= 25) {
+        if (newName !== "") {
             return setHabits((habits) =>
                 habits.map((habit) => habit.id === habitId ? {...habit, name: newName} : habit)
             );
-        } else {
-            alert("Write something between 1 and 25 characters")
         }
 
     }
@@ -210,7 +226,7 @@ export default function Home() {
                                             <IconMore />
                                         </button>
                                         {openPopover === habit.id && (
-                                            <div className={styles.habitPopover} onClick={() => togglePopover(habit.id)}>
+                                            <div className={styles.habitPopover} onClick={() => togglePopover(habit.id)} ref={popoverRef}>
                                                 <div className={styles.habitPopoverInner}>
                                                     <button onClick={() => changeHabitName(habit.id)} className={styles.habitPopoverButton}>
                                                         <IconEdit />
@@ -243,7 +259,7 @@ export default function Home() {
                                         const isChecked = habit.checkedDays.includes(date.toISOString());
                                         const month = date.toLocaleDateString("en-GB", {month: "short"});
                                         const day = date.toLocaleDateString("en-GB", {day: "numeric"})
-                                        const weekday = date.toLocaleDateString("en-GB", {weekday: "narrow"})
+                                        const weekday = date.toLocaleDateString("en-GB", {weekday: "short"})
 
                                         return (
                                             <Checkbox
@@ -252,7 +268,7 @@ export default function Home() {
                                                 label={
                                                     {
                                                         title: weekday,
-                                                        subtitle: day + " " + month
+                                                        subtitle: day + " " + (day === "1" || day === "5" || day === "10" || day === "15" || day === "20" || day === "25" ? month : "")
                                                     }
                                                 }
                                                 isChecked={isChecked}
